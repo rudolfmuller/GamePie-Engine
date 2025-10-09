@@ -1,0 +1,2 @@
+[plugins]
+use = ["gamepie.plugins.SoundsAssets","gamepie.plugins.Controllers",]

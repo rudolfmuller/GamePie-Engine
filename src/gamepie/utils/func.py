@@ -63,7 +63,8 @@ def slide(obj, start_pos, end_pos, speed=2):
 
     return (x, y)
 
-        
+
+
 def blit(surface, obj, position):
     surface().blit(obj, position)
 
@@ -71,17 +72,6 @@ def unpackobj(obj):
     x,y = obj.pos
     w,h = obj.size
     return x,y,w,h
-
-def gpvenv_start(name=None):
-    if name is None:
-        name = "main"  # nebo get_mypath(), podle toho co máš
-
-    if platform.system() == "Windows":
-        python_exe = os.path.join("venv", "Scripts", "python.exe")
-    else:
-        python_exe = os.path.join("venv", "bin", "python")
-
-    subprocess.run([python_exe, f"{name}.py"])
 
 def screenshot(surface, name=f"screenshot.jpg", msg=True):
     from .gpbox import Messagebox as msgbox
@@ -97,6 +87,7 @@ import pickle
 import json
 
 def gpdata_save(objects, filename="objects.dat", type=""):
+    # ai//t:my
     data = []
 
     for obj in objects:
@@ -111,7 +102,7 @@ def gpdata_save(objects, filename="objects.dat", type=""):
                     pass
             obj_data['_class'] = type(obj).__name__
         else:
-            # podporuje libovolné hodnoty (str, int, list, atd.)
+
             obj_data = {"_value": obj}
 
         data.append(obj_data)
@@ -132,6 +123,8 @@ def gpdata_save(objects, filename="objects.dat", type=""):
 
 
 def gpdata_load(filename="objects.dat", type=""):
+    # ai//t:my
+
     if not os.path.exists(filename):
         _gp_log("no saved file found.")
         return []
@@ -166,12 +159,12 @@ def build(script_path: str, icon=None, windowed=False, output_dir=None):
 
     script_path = Path(script_path).resolve()
     sep = ";" if platform.system() == "Windows" else ":"
-    base_dir = Path(__file__).resolve().parent
+    base_dir = Path(__file__).resolve().parent.parent
     assets_dir = base_dir / "assets"
     plugins_dir = base_dir / "plugins"
 
     if not assets_dir.exists():
-        print("[build]: 'assets' folder not found!")
+        print("[build]: 'assets' folder not found!",assets_dir)
         return
 
     if icon is None:
@@ -188,7 +181,8 @@ def build(script_path: str, icon=None, windowed=False, output_dir=None):
         for path in folder.rglob("*"):
             if path.is_file():
                 rel_path = path.relative_to(folder)
-                items.append(f"{path}{sep}{target_name}/{rel_path.parent.as_posix()}")
+                items.append(f"{path}{sep}{target_name}/{rel_path.as_posix()}")
+
         return items
 
     add_data = collect_add_data(assets_dir, "assets") + collect_add_data(plugins_dir, "plugins")

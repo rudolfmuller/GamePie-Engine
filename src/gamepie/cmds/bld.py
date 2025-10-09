@@ -2,6 +2,7 @@ import sys
 import argparse
 
 def main():
+    import subprocess; subprocess.run(["cls" if subprocess.os.name == "nt" else "clear"])  
     from ..utils.func import build
 
     parser = argparse.ArgumentParser(
@@ -9,17 +10,17 @@ def main():
     )
     parser.add_argument("script_path", help="Path to the Python script to build.")
     parser.add_argument(
-        "--icon",
+        "--icon", "-ico",
         help="Path to the icon file.",
         default=None
     )
     parser.add_argument(
-        "--windowed",
+        "--windowed", "-w",
         action="store_true",
         help="Build with windowed mode (no console)."
     )
     parser.add_argument(
-        "--output",
+        "--output", "-o",
         help="Output directory for the build.",
         default=None
     )

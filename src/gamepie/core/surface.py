@@ -51,7 +51,7 @@ class Surface:
         self.surface.set_colorkey(color)
     @property
     def rect(self):
-        r = Rect(0, 0, self.width, self.height)
+        r = Rect(0, 0, self.w, self.h)
         return r
 
     @rect.setter

@@ -41,7 +41,7 @@ class Namespace:
     def __init__(self,dict):
         self._dict = dict
     
-    def set(self,name, value):
+    def set(self,name, value=None):
         self._dict[name] = value
     def get(self,name):
         return self._dict[name]

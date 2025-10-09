@@ -1,5 +1,5 @@
 import pygame
-from .constants import CURSOR_ARROW
+from .constants import SYS_CURSOR_ARROW
 pygame.init()
 
 class _Mouse:
@@ -11,7 +11,7 @@ class _Mouse:
         self._left = False
         self._middle = False
         self._right = False
-        self._cursor = CURSOR_ARROW
+        self._cursor = SYS_CURSOR_ARROW
         self._int_mousewheel = 0
         
     def update(self, events):

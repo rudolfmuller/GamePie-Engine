@@ -37,6 +37,32 @@ _colors = {
     "TURQUOISE"  : (64, 224, 208),
 }
 
+def mycolor(colorcode: str = "RED-Lx5"):
+    try:
+        parts = colorcode.split("-")
+        color = parts[0].upper()
+        edit = parts[1].split("x")[0].upper()
+        steps = int(parts[1].split("x")[1])
+        
+        base = _colors[color]
+        r, g, b = base
+
+        if edit == "L":  # Lighten
+            factor = 10 * steps
+            r = min(255, r + factor)
+            g = min(255, g + factor)
+            b = min(255, b + factor)
+        elif edit == "D":  # Darken
+            factor = 10 * steps
+            r = max(0, r - factor)
+            g = max(0, g - factor)
+            b = max(0, b - factor)
+
+        return (r, g, b)
+    except Exception as e:
+        raise Exception(f"error parsing color: {e}")
+
+
 class _Color:
     def __init__(self, color):
         if isinstance(color, str) and color.upper() in _colors:

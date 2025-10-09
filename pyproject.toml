@@ -10,18 +10,35 @@ readme = "README.md"
 authors = [
   { name = "Qller Studio" }
 ]
-license = "MIT"
+license = { text = "MIT" }
 requires-python = ">=3.7"
 dependencies = [
   "numpy",
   "pygame",
-  "pyinstaller",
   "pillow"
 ]
+
 classifiers = [
   "Programming Language :: Python :: 3",
-  "Operating System :: MS Windows :: Linux"
+  "Operating System :: Microsoft :: Windows",
+  "Operating System :: POSIX :: Linux",
+  "Operating System :: MacOS :: MacOS X",
+  "License :: OSI Approved :: MIT License"
 ]
+
+[project.scripts]
+gphelp = "gamepie.cmds.help:main"
+gp = "gamepie.cmds.abt:main"
+gpabout = "gamepie.cmds.abt:main"
+gpplug = "gamepie.cmds.plug:main"
+gpbuild = "gamepie.cmds.bld:main"
+gpupdater = "gamepie.cmds.upt:main"
+gpinit = "gamepie.cmds.init:main"
+gpgit = "gamepie.cmds.webs:opengit"
+gpyt = "gamepie.cmds.webs:openyt"
+
+[project.optional-dependencies]
+build = ["pyinstaller","toml"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

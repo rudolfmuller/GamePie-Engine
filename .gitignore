@@ -1,6 +1,10 @@
 __pycache__/
-ignor/
-myscreenshots/
+*.pyc
+
 build/
 src/gamepie.egg-info/
-*.pyc
+
+16n0r/
+myscreenshots/
+
+

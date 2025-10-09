@@ -95,24 +95,23 @@ class Messagebox:
         button_type = int(type_str[1])
 
         icons = {
-            0: ("Error", "src/gamepie/assets/msgIco/gperr.png"),
-            1: ("Error", "src/gamepie/assets/msgIco/gperr.png"),
-            2: ("Warning", "src/gamepie/assets/msgIco/gpwarn.png"),
-            3: ("Info", "src/gamepie/assets/msgIco/gpmsg.png"),
-            4: ("Question", "src/gamepie/assets/msgIco/gpqest.png"),
-            5: ("Information", "src/gamepie/assets/msgIco/gpinfo.png"),
-            6: ("Screenshot", "src/gamepie/assets/msgIco/gpscrshot.png"),
+            0: ("Error", resource_path("assets/msgIco/gperr.png")),
+            1: ("Error", resource_path("assets/msgIco/gperr.png")),
+            2: ("Warning", resource_path("assets/msgIco/gpwarn.png")),
+            3: ("Info", resource_path("assets/msgIco/gpmsg.png")),
+            4: ("Question", resource_path("assets/msgIco/gpqest.png")),
+            5: ("Information", resource_path("assets/msgIco/gpinfo.png")),
+            6: ("Screenshot", resource_path("assets/msgIco/gpscrshot.png")),
         }
+
         title, icon_path = icons.get(icon_type, icons[0])
         if self._title:
             root.title(self._title)
         else:
             root.title(title)
 
-        try:
-            img = Image.open(icon_path)
-        except Exception:
-            img = Image.new("RGBA", (100, 100), (255, 0, 0, 255))
+        img = Image.open(icon_path)
+
         img = img.resize((100, 100))
         photo = ImageTk.PhotoImage(img)
 
@@ -196,13 +195,13 @@ def gpfile_dialog(typefiles=None, select=0):
             ]
 
         def open_dialogWin():
-            buffer = ctypes.create_unicode_buffer(260)  # MAX_PATH
+            buffer = ctypes.create_unicode_buffer(260) 
             ofn = OPENFILENAMEW()
             ofn.lStructSize = ctypes.sizeof(ofn)
             ofn.lpstrFile = buffer
             ofn.nMaxFile = len(buffer)
 
-            # Filters
+
             if typefiles is None:
                 filter_str = "All files\0*.*\0"
             else:
@@ -221,7 +220,6 @@ def gpfile_dialog(typefiles=None, select=0):
 
         return open_dialogWin()
 
-    # --- LINUX / MAC ---
     else:
         def open_dialogUnix():
             try:

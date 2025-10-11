@@ -44,10 +44,6 @@ It works on MS Windows and Linux (possibly macOS).
 ```bash
 pip install .
 ```
-### or use own installer:
-```bash
-./gp_iWV.bat
-```
 
 ### For Linux (with virtual environment):
 
@@ -56,10 +52,7 @@ python -m venv venv
 source venv/bin/activate
 pip install .
 ```
-### or use own installer:
-```bash
-./gp_iLV.bat
-```
+
 ### Run (with virtual environment)
 ```bash
 python -m venv venv
@@ -270,3 +263,4 @@ color = gamepie.utils.Color("SKY")()
 ## More
 
 For more examples, see the `src/` folder and the `examples.py` file.
+

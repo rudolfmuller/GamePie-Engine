@@ -264,3 +264,5 @@ color = gamepie.utils.Color("SKY")()
 
 For more examples, see the `src/` folder and the `examples.py` file.
 
+Made by Rudolf Mueller
+
